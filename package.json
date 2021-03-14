@@ -1,0 +1,55 @@
+{
+    "name": "wenyan-lang-simplified-dialect",
+    "displayName": "文言 Wenyan Lang 简化方言 simplified dialect for vscode",
+    "description": "A dialect of 文言 Wenyan Lang",
+    "version": "0.0.1",
+    "publisher": "XiLaiTL",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.54.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "wenyan",
+                "aliases": [
+                    "文言",
+                    "wenyan"
+                ],
+                "extensions": [
+                    ".wy"
+                ],
+                "firstLine": "^\\s吾嘗觀(『|(「「))简化方言(』|(」」))之書。$",
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "wenyan",
+                "path": "./snippets/keyword.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "wenyan",
+                "scopeName": "source.wenyan",
+                "path": "./syntaxes/wenyan.tmLanguage.json"
+            }
+        ]
+    },
+    "dependencies": {
+        "typescript": "^4.2.3"
+    },
+    "bugs": {
+        "url": "https://github.com/XiLaiTL/simplified-dialect-wy-vscode/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/XiLaiTL/simplified-dialect-wy-vscode"
+    },
+    "homepage": "https://github.com/XiLaiTL/simplified-dialect-wy-vscode/blob/master/README.md"
+}

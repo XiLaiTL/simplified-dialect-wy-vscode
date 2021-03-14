@@ -1,0 +1,138 @@
+,"wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)|([\u4e00-\u9fa5]*)|(「[\u4e00-\u9fa5]*」)|(「[\u4e00-\u9fa5]*」·[\u4e00-\u9fa5])|(「[\u4e00-\u9fa5]*」·「[\u4e00-\u9fa5]*」)|(「[\u4e00-\u9fa5]*」·「「[\u4e00-\u9fa5]*」」)"
+    
+    "indentationRules": {
+      "increaseIndentPattern": "(^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$)|(^((?!\\/\\/).)*(\\｛[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$)|(^((?!\\/\\/).)*(\\【[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$)",
+      "decreaseIndentPattern": "(^((?!.*?\\/\\*).*\\*/)?\\s*[\\}\\]].*$)|(^((?!.*?\\/\\*).*\\*/)?\\s*[\\｝\\]].*$)|(^((?!.*?\\/\\*).*\\*/)?\\s*[\\】\\]].*$)"
+    }
+
+    {
+	{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "文言",
+	"patterns": [
+		{
+			"include": "#keywords"
+		  },
+		  {
+			"include": "#constants"
+		  },
+		  {
+			"include": "#operators"
+		  },
+		  {
+			"include": "#symbols"
+		  },
+		  {
+			"include": "#expression"
+		  },
+		  {
+			"include": "#comment-blocks"
+		  },
+		  {
+			"include": "#comment-lines"
+		  }
+	],
+	"repository": {
+		"expression": {
+		  "patterns": [
+			{
+			  "include": "#variables"
+			}
+		  ]
+		},
+		"keywords": {
+		  "patterns": [
+			{
+			  "name": "storage.type",
+			  "match": "元|物|爻|術|言|列|數|术|数"
+			},
+			{
+			  "name": "keyword.control",
+			  "match": "乃行是術曰|若其不然者|乃止是遍|乃歸空無|欲行是術|若其然者|其物如是|乃得矣|恆為是|之術也|必先得|是術曰|之物也|云云|其餘|中之|為是|之長|乃止|若非|或若|乃得|是謂|乃行是术曰|乃归空无|欲行是术|恒为是|之术也|是术曰|其余|为是|之长|是谓|授|予|参|举"
+			},
+			{
+			  "name": "keyword.control",
+			  "match": "蓋謂|或云"
+			},
+			{
+			  "name": "keyword.operator",
+			  "match": "中有陽乎|所餘幾何|中無陰乎|不等於|不大於|不小於|等於|大於|小於|加|乘|除|變|以|於|減|中有阳乎|所余几何|中无阴乎|不等于|不大于|不小于|等于|大于|小于|变|于|减|余|苛|宽|演"
+			},
+			{
+			  "name": "keyword.other",
+			  "match": "不知何禍歟|不復存矣|如事不諧|姑妄行此|吾嘗觀|之禍歟|乃作罷|名之曰|書之|以施|之禍|嗚呼|之義|昔之|方悟|是矣|今有|吾有|之書|物之|夫|中|今|取|噫|曰|施|豈|有|不知何祸欤|不复存矣|如事不谐|吾尝观|之祸欤|乃作罢|书之|之祸|呜呼|之义|之书|岂|书"
+			},
+			{
+			  "name": "keyword.control",
+			  "match": "者|若|遍|之|充|銜|凡|也|衔|而|或"
+			}
+		  ]
+		},
+		"comment-lines": {
+		  "name": "comment.line",
+		  "begin": "注曰|疏曰|批曰",
+		  "end": "$",
+		  "patterns": [
+			{
+			  "name": "constant.character",
+			  "match": "\\\\."
+			}
+		  ]
+		},
+		"comment-blocks": {
+		  "name": "comment.block",
+		  "begin": "(注曰|疏曰|批曰)。?(「「|『)",
+		  "end": "(」」|』)",
+		  "patterns": [
+			{
+			  "name": "constant.character",
+			  "match": "\\\\."
+			}
+		  ]
+		},
+		"constants": {
+		  "patterns": [
+			{
+			  "name": "constant.numeric",
+			  "match": "負|·|又|零|〇|一|二|三|四|五|六|七|八|九|十|百|千|萬|億|兆|京|垓|秭|穰|溝|澗|正|載|極|分|釐|毫|絲|忽|微|纖|沙|塵|埃|渺|漠"
+			},
+			{
+			  "name": "constant.language",
+			  "match": "陰|陽|其|阴|阳"
+			},
+			{
+			  "name": "string.quoted",
+			  "begin": "「「|『|——",
+			  "end": "」」|』|——",
+			  "patterns": [
+				{
+				  "name": "constant.character",
+				  "match": "\\\\."
+				}
+			  ]
+			}
+		  ]
+		},
+		"symbols": {
+		  "patterns": [
+			{
+			  "name": "punctuation.separator",
+			  "match": "。|、|；|…|？|！|：|【|】|（|)|{|}|‘|’|“|”|《|》"
+			}
+		  ]
+		},
+		"variables": {
+		  "name": "variable.other",
+		  "begin": "「",
+		  "end": "」",
+		  "patterns": [
+			{
+			  "name": "constant.character",
+			  "match": "\\\\."
+			}
+		  ]
+		}
+	  },
+	"scopeName": "source.wenyan"
+	
+}
